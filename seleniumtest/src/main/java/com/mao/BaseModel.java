@@ -9,9 +9,11 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseModel {
 
+    public static String DRIVER_PATH = "D:\\java\\chromedriver.exe";
     public static ChromeDriver driver;
 
     public static void main(String[] args) {
+        System.out.println(args[0]);
         initChromeDriver();
         driver.get("http://localhost:9528");
         WebElement source = driver.findElementByXPath("//*[@id=\"nodes\"]/li[1]");
@@ -23,7 +25,7 @@ public class BaseModel {
     }
 
     private static void initChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "D:\\java\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",DRIVER_PATH);
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
